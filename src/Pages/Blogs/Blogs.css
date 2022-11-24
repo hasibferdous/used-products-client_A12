@@ -1,0 +1,17 @@
+.blog h3 {
+    font-size: 45px;
+    text-align: center;
+}
+
+.blog h5 {
+    font-size: 30px;
+    padding-top: 90px;
+}
+
+.blog p {
+    font-size: 25px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
