@@ -1,3 +1,38 @@
+client site repo link: https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-hasibferdous
+
+server site repo link: https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-hasibferdous
+
+live website link:
+
+#Project Name: ReSaleBike.com
+
+## Common features and functionalities of the website:
+* Category wise  Bike collections to resale.
+* Resale bike's booking option.
+* Dashboard section for Buyers, Sellers and Admins.
+* Firebase authentication. 
+* Login and Registration process using Email & Password and Google for both Buyers and Sellers.
+* Responsive design for mobile and desktop.
+* Use of JWT tokens.
+* Use of private route.
+* Checkout Section.
+* Blog Page containing QnA.
+
+## Technologies Used 
+* Client site: React JS, React Tailwinds CSS, DaisyUI,  React router dom, Firebase,
+react-day-picker.
+* Server: Node, Express, Vercel, Mongodb
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

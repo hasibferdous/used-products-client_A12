@@ -1,0 +1,17 @@
+[
+    {
+        "id": "01",
+        "name": "Sports Bike",
+        "img": "sportsbike"
+    },
+    {
+        "id": "02",
+        "name": "Scooters",
+        "img": "scooter"
+    },
+    {
+        "id": "03",
+        "name": "Cafe Racer",
+        "img": "cafeRacer"
+    }
+]
