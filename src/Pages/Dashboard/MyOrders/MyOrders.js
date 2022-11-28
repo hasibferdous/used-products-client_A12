@@ -5,7 +5,7 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5001/bookings?email=${user?.email}`;
+    const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -22,7 +22,6 @@ const MyOrders = () => {
 
     return (
         <div>
-                    <div>
              <h3 className="text-3xl mb-5">My Orders</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -31,8 +30,8 @@ const MyOrders = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Phone No.</th>
-                            <th>Meeting Location</th>
+                            <th>Phone</th>
+                            <th>Location</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,8 +47,6 @@ const MyOrders = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
-
         </div>
     );
 };

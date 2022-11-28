@@ -59,7 +59,7 @@ const SellerSignUp = () => {
     }
      const saveSeller = (name, email) =>{
         const seller ={name, email};
-         fetch('http://localhost:5001/sellers', {
+         fetch('http://localhost:5000/sellers', {
             method: 'POST',
             headers: {
                  'content-type': 'application/json'
@@ -68,10 +68,21 @@ const SellerSignUp = () => {
        })
         .then(res => res.json())
          .then(data =>{
-             console.log(data);
-            navigate('/');
+            //  console.log(data);
+            // navigate('/');
+            getUserToken(email);
         })
      }
+     const getUserToken = email =>{
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+        .then(res => res.json())
+        .then(data =>{
+            if(data.accessToken){
+                localStorage.setItem('accessToken', data.accessToken)
+                navigate('/');
+            }
+        })
+    }
 
 
 

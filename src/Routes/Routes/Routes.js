@@ -2,6 +2,8 @@ import { createBrowserRouter} from 'react-router-dom'
 import DashboardLayout from '../../Layout/DashboardLayout';
 import Main from '../../Layout/Main/Main';
 import Blogs from '../../Pages/Blogs/Blogs';
+import AllSellers from '../../Pages/Dashboard/AllSellers/AllSellers';
+import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers';
 import MyOrders from '../../Pages/Dashboard/MyOrders/MyOrders';
 import Category from '../../Pages/Home/Categories/Category';
 import Home from '../../Pages/Home/Home/Home';
@@ -46,6 +48,8 @@ const router = createBrowserRouter([
         },
 
 
+
+
         // {
         //    path: '/category/:id',
         //    element: <Category></Category>
@@ -53,12 +57,12 @@ const router = createBrowserRouter([
          {
          path: '/category/:id',
          element: <Category></Category>,
-         loader: ({params}) => fetch(`http://localhost:5001/category/${params.id}`)
+         loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
      },
       {
          path: '/products/:id',
         element: <ProductCard></ProductCard> ,
-         loader: ({params}) => fetch(`http://localhost:5001/products/${params.id}`)
+         loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
      },
      {
         path: '/products',
@@ -78,7 +82,15 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <MyOrders></MyOrders>
-            }
+            },
+            {
+                path: '/dashboard/allusers',
+                element: <AllUsers></AllUsers>
+            },
+            {
+                path: '/dashboard/allsellers',
+                element: <AllSellers></AllSellers>
+            },
     
         ]
     },

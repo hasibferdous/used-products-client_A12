@@ -10,10 +10,10 @@ const BuyerSignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
+    const navigate = useNavigate();
     const [createdUserEmail, setCreatedUserEmail] = useState('')
     const [token] = useToken(createdUserEmail);
-    const navigate = useNavigate();
-
+    
     if(token){
         navigate('/');
     }
@@ -42,7 +42,7 @@ const BuyerSignUp = () => {
 
     const saveUser = (name, email) =>{
         const user ={name, email};
-        fetch('http://localhost:5001/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -54,16 +54,19 @@ const BuyerSignUp = () => {
             setCreatedUserEmail(email);
         })
     }
-    // const getUserToken = email =>{
-    //     fetch(`http://localhost:5001/jwt?email=${email}`)
-    //     .then(res => res.json())
-    //     .then(data =>{
-    //         if(data.accessToken){
-    //             localStorage.setItem('accessToken', data.accessToken)
-    //             navigate('/');
-    //         }
-    //     })
-    // }
+
+    const getUserToken = email =>{
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+        .then(res => res.json())
+        .then(data =>{
+            if(data.accessToken){
+                localStorage.setItem('accessToken', data.accessToken)
+                navigate('/');
+            }
+        })
+    }
+
+
 
 
 
@@ -80,30 +83,32 @@ const BuyerSignUp = () => {
             const userInfo = {
                 displayName: data.name
             }
-            updateUser(userInfo)
-                .then(() => { })
-                saveUser(data.name, data.email);
+                            updateUser(userInfo)
+                    .then(() => { 
+                        saveUser(data.name, data.email);
+                    })
+
         })
         .catch(error => {
             console.log(error)
             setSignUPError(error.message)
         });
     }
-    // const saveUser = (name, email) =>{
-    //     const user ={name, email};
-    //     fetch('http://localhost:5001/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //     .then(res => res.json())
-    //     .then(data =>{
-    //         console.log(data);
-    //         navigate('/');
-    //     })
-    // }
+    const saveGUser = (name, email) =>{
+        const user ={name, email};
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+            navigate('/');
+        })
+    }
 
 
     return (
