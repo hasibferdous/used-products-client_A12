@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile} from 'firebase/auth';
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
 import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
@@ -7,8 +7,14 @@ const auth = getAuth(app)
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
+    const [seller, setSeller] = useState(null);
     const [loading, setLoading] = useState(true);
+
     const createUser = (email, password) =>{
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+    const createSeller = (email, password) =>{
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
@@ -17,9 +23,16 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
+     const providerLogin = (provider) =>{
+         setLoading(true);
+         return signInWithPopup(auth, provider);
+     }
 
     const updateUser = (userInfo) =>{
         return updateProfile(auth.currentUser, userInfo);
+    }
+    const updateSeller = (sellerInfo) =>{
+        return updateProfile(auth.currentUser, sellerInfo);
     }
 
 
@@ -37,14 +50,27 @@ const AuthProvider = ({children}) => {
 
         return () => unsubscribe();
     }, [])
+    useEffect( () =>{
+        const unsubscribe = onAuthStateChanged(auth, currentUser =>{
+            console.log('user observing');
+            setSeller(currentUser);
+            setLoading(false);
+        });
+
+        return () => unsubscribe();
+    }, [])
 
     const authInfo = {
         createUser,
+        createSeller,
         signIn,
         updateUser,
         logOut,
         user,
-        loading
+        loading,
+        seller,
+        updateSeller,
+        providerLogin
     }
     return (
         <AuthContext.Provider value={authInfo}>
