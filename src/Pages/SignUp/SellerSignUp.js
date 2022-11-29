@@ -59,7 +59,7 @@ const SellerSignUp = () => {
     }
      const saveSeller = (name, email, role) =>{
         const seller ={name, email, role};
-         fetch('http://localhost:5000/users', {
+         fetch('http://localhost:5000/sellers', {
             method: 'POST',
             headers: {
                  'content-type': 'application/json'

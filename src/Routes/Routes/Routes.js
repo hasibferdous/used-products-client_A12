@@ -22,7 +22,9 @@ import BuyerSignUp from '../../Pages/SignUp/BuyerSignUp';
 import SellerSignUp from '../../Pages/SignUp/SellerSignUp';
 import SignUp from '../../Pages/SignUp/SignUp';
 import AdminRoute from '../AdminRoute/AdminRoute';
+import BuyerRoute from '../BuyerRoute/BuyerRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import SellerRoute from '../SellerRoute/SellerRoute';
 
 const router = createBrowserRouter([
     {
@@ -93,28 +95,28 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/myorders',
-                element: <MyOrders></MyOrders>
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
 
             {
                 path: '/dashboard/allusers',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
             {
                 path: '/dashboard/allsellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: '/dashboard/addproduct',
-                element: <AddProduct></AddProduct>
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path: '/dashboard/manageproducts',
-                element: <ManageProducts></ManageProducts>
+                element: <SellerRoute><ManageProducts></ManageProducts></SellerRoute>
             },
             {
                 path: '/dashboard/seller',
-                element: <DashboardSeller></DashboardSeller>
+                element:<SellerRoute><DashboardSeller></DashboardSeller></SellerRoute> 
             },
             {
                 path: '/dashboard/admin',
@@ -122,7 +124,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/buyer',
-                element: <DashboardBuyer></DashboardBuyer>
+                element:<BuyerRoute><DashboardBuyer></DashboardBuyer></BuyerRoute>
             },
 
     

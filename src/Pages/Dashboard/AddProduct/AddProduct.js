@@ -39,8 +39,8 @@ const AddProduct = () => {
         
     return (
         <div>
-             <div className='w-96 p-7'>
-            <h2 className="text-4xl">Add A Product</h2>
+             <div className='w-96 p-7 bg-slate-300 mt-5 mb-5'>
+             <h2 className="text-3xl text-center font-bold m-5">Add A Product</h2>
             <form onSubmit={handleSubmit(handleAddDoctor)}>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Name</span></label>
