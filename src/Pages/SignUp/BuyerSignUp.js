@@ -22,7 +22,7 @@ const BuyerSignUp = () => {
     const handleSignUp = (data) => {
         console.log(data);
         setSignUPError('');
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.role)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -32,7 +32,7 @@ const BuyerSignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => { })
-                    saveUser(data.name, data.email);
+                    saveUser(data.name, data.email, data.role);
             })
             .catch(error => {
                 console.log(error)
@@ -40,8 +40,8 @@ const BuyerSignUp = () => {
             });
     }
 
-    const saveUser = (name, email) =>{
-        const user ={name, email};
+    const saveUser = (name, email, role) =>{
+        const user ={name, email, role};
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -131,6 +131,16 @@ const BuyerSignUp = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                     </div>
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text">Role</span></label>
+                        <select {...register("role", {
+                        required: "Role is Required"
+                    })} className="select select-bordered w-full max-w-xs">
+                            <option disabled selected>buyer</option> 
+                        </select>
+                    </div>
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Password</span></label>
                         <input type="password" {...register("password", {

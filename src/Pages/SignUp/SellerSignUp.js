@@ -38,7 +38,7 @@ const SellerSignUp = () => {
     const handleSellerSignUp = (data) => {
         console.log(data);
         setSignUPError('');
-        createSeller(data.email, data.password)
+        createSeller(data.email, data.password, data.role)
             .then(result => {
                 const seller = result.user;
                 console.log(seller);
@@ -48,7 +48,7 @@ const SellerSignUp = () => {
                 }
                 updateSeller(userInfo)
                     .then(() => { 
-                        saveSeller(data.name, data.email);
+                        saveSeller(data.name, data.email, data.role);
                     })
 
             })
@@ -57,9 +57,9 @@ const SellerSignUp = () => {
                 setSignUPError(error.message)
             });
     }
-     const saveSeller = (name, email) =>{
-        const seller ={name, email};
-         fetch('http://localhost:5000/sellers', {
+     const saveSeller = (name, email, role) =>{
+        const seller ={name, email, role};
+         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                  'content-type': 'application/json'
@@ -124,6 +124,17 @@ const SellerSignUp = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                     </div>
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text">Role</span></label>
+                        <select {...register("role", {
+                        required: "Role is Required"
+                    })} className="select select-bordered w-full max-w-xs">
+                            <option disabled selected>seller</option> 
+                        </select>
+                    </div>
+
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Password</span></label>
                         <input type="password" {...register("password", {

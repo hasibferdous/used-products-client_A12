@@ -100,7 +100,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/manageproducts',
-                element: <AdminRoute><ManageProducts></ManageProducts></AdminRoute>
+                element: <ManageProducts></ManageProducts>
             },
 
     
