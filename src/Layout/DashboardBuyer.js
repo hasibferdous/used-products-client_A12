@@ -11,7 +11,7 @@ const DashboardBuyer = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80  text-base-content">    
-                        <button className='p-3 bg-red-400 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard">My Orders</Link></button>
+                    <button className='p-3 bg-violet-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/myorders">My Orders</Link></button>
                     </ul>
                </div>
             </div>

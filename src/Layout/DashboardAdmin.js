@@ -14,11 +14,11 @@ const DashboardAdmin = () => {
                        {
                             <>
                             
-                                 <li><Link to="/dashboard/allusers">All Users/Buyers</Link></li> 
-                                <li><Link to="/dashboard/allsellers">All Sellers</Link></li> 
-                                <li><Link to="/dashboard/addproduct">Add Products</Link></li>
-                                <li><Link to="/dashboard/manageproducts">Manage Products</Link></li>
-                                
+                            <button className='p-3 bg-red-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/allusers">All Buyers</Link></button> 
+                            <button className='p-3 bg-red-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/allsellers">All Sellers</Link></button> 
+                            {/* <button className='p-3 bg-red-400 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/addproduct">Add Products</Link></button> */}
+                            {/* <button className='p-3 bg-red-400 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/manageproducts">Manage Products</Link></button> */}
+                            <button className='p-3 bg-red-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/reporteditems">Reported Items</Link></button>   
                             </>
                         }
                     </ul>

@@ -9,6 +9,7 @@ import Blogs from '../../Pages/Blogs/Blogs';
 import AddProduct from '../../Pages/Dashboard/AddProduct/AddProduct';
 import AllSellers from '../../Pages/Dashboard/AllSellers/AllSellers';
 import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers';
+import Dashboard from '../../Pages/Dashboard/Dashboard/Dashboard';
 import ManageProducts from '../../Pages/Dashboard/ManageProducts/ManageProducts';
 import MyOrders from '../../Pages/Dashboard/MyOrders/MyOrders';
 import Category from '../../Pages/Home/Categories/Category';
@@ -88,8 +89,13 @@ const router = createBrowserRouter([
 
             {
                 path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            },
+            {
+                path: '/dashboard/myorders',
                 element: <MyOrders></MyOrders>
             },
+
             {
                 path: '/dashboard/allusers',
                 element: <AllUsers></AllUsers>

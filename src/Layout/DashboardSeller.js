@@ -11,12 +11,8 @@ const DashboardSeller = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80  text-base-content">
-                       {
-                            <>
-                                <li><Link to="/dashboard/addproduct">Add Products</Link></li>
-                                <li><Link to="/dashboard/manageproducts">Manage Products</Link></li>
-                            </>
-                        }
+                                <button className='p-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/addproduct">Add Products</Link></button>
+                                <button className='p-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/manageproducts">My Products</Link></button>
                     </ul>
                </div>
             </div>
