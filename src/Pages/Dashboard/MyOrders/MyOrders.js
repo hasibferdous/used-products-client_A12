@@ -22,7 +22,7 @@ const MyOrders = () => {
 
     return (
         <div>
-             <h3 className="text-3xl mb-5">My Orders</h3>
+             <h3 className="text-3xl mb-5 text-center mt-4 font-bold">My Orders</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
