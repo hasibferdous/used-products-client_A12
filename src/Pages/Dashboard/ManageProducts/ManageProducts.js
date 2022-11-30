@@ -17,12 +17,13 @@ const ManageProducts = () => {
     const closeModal1 = () => {
         setAdvertiseProduct(null);
     }
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
+
     const { data: addedproducts, isLoading, refetch } = useQuery({
         queryKey: ['addedproducts'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/addedproducts', {
+                const res = await fetch('https://resale-products-server-hazel.vercel.app/addedproducts', {
                      headers: {
                          authorization: `bearer ${localStorage.getItem('accessToken')}`
                      }
@@ -35,8 +36,8 @@ const ManageProducts = () => {
         }
     });
     
-    const handleDeleteaddedproduct = addedproduct => {
-        fetch(`http://localhost:5000/addedproducts/${addedproduct._id}`, {
+    const handleDeleteProduct = addedproduct => {
+        fetch(`https://resale-products-server-hazel.vercel.app/addedproducts/${addedproduct._id}`, {
             method: 'DELETE', 
              headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -52,7 +53,7 @@ const ManageProducts = () => {
     }
 
     const handleAdvertiseAddedproduct = addedproduct => {
-        fetch(`http://localhost:5000/addedproducts/${addedproduct._id}`, {
+        fetch(`https://resale-products-server-hazel.vercel.app/addedproducts/${addedproduct._id}`, {
             method: '', 
              headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -63,7 +64,7 @@ const ManageProducts = () => {
             if(data.Count > 0){
                 refetch();
                 toast.success(`Product ${addedproduct.name} advertise successfully`)
-                navigate('/');
+                // navigate('/');
             }
         })
     }
@@ -110,7 +111,7 @@ const ManageProducts = () => {
                                     <label onClick={() => setDeletingProduct(addedproduct)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
                                 </td>
                                 <td>
-                                    <label onClick={() => setAdvertiseProduct(addedproduct)} htmlFor="confirmation-modal" className="btn btn-sm btn-success" >Advertise</label>
+                                    <label onClick={() => setAdvertiseProduct(addedproduct)} htmlFor="confirmation-modal1" className="btn btn-sm btn-success" >Advertise</label>
                                 
                                 </td>
                             </tr>)
@@ -122,7 +123,7 @@ const ManageProducts = () => {
                 deletingProduct && <ConfirmationModal
                     title={`Are you sure you want to delete?`}
                     message={`If you delete ${deletingProduct.name}. It cannot be undone.`}
-                    successAction = {handleDeleteaddedproduct}
+                    successAction = {handleDeleteProduct}
                     successButtonName="Delete"
                     modalData = {deletingProduct}
                     closeModal = {closeModal}

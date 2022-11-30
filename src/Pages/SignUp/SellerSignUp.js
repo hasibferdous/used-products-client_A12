@@ -3,16 +3,21 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 
 const SellerSignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     // const { createUser, updateUser } = useContext(AuthContext);
     const { createSeller, updateSeller } = useContext(AuthContext);
-    // const [createdUserEmail, setCreatedUserEmail] = useState('')
+     const [createdSellerEmail, setCreatedSellerEmail] = useState('')
     const [signUpError, setSignUPError] = useState('')
     const navigate = useNavigate();
-
+    const [token] = useToken(createdSellerEmail);
+    
+    if(token){
+        navigate('/');
+    }
     // const handleSignUp = (data) => {
     //     console.log(data);
     //     setSignUPError('');
@@ -59,7 +64,7 @@ const SellerSignUp = () => {
     }
      const saveSeller = (name, email, role) =>{
         const seller ={name, email, role};
-         fetch('http://localhost:5000/sellers', {
+         fetch('https://resale-products-server-hazel.vercel.app/sellers', {
             method: 'POST',
             headers: {
                  'content-type': 'application/json'
@@ -68,13 +73,14 @@ const SellerSignUp = () => {
        })
         .then(res => res.json())
          .then(data =>{
+            setCreatedSellerEmail(email);
             //  console.log(data);
             // navigate('/');
             getUserToken(email);
         })
      }
      const getUserToken = email =>{
-        fetch(`http://localhost:5000/jwt?email=${email}`)
+        fetch(`https://resale-products-server-hazel.vercel.app/jwt?email=${email}`)
         .then(res => res.json())
         .then(data =>{
             if(data.accessToken){

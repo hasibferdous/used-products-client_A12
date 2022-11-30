@@ -6,7 +6,7 @@ const AdvertiseModal = ({ title, message, img, successButtonName, closeModal1, m
   
     return (
         <div>
-            <input type="checkbox" id="confirmation-modal" className="modal-toggle" />
+            <input type="checkbox" id="confirmation-modal1" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box w-11/12 max-w-5xl">
                     <h3 className="font-bold text-lg">{title}</h3>
@@ -15,7 +15,7 @@ const AdvertiseModal = ({ title, message, img, successButtonName, closeModal1, m
                     <div className="modal-action">
                         <label 
                         onClick={() => successAction(modalData)} 
-                        htmlFor="confirmation-modal" 
+                        htmlFor="confirmation-modal1" 
                         
                         className="btn btn-primary"><Link to='/'>{successButtonName}</Link></label>
                         <button onClick={closeModal1} className='btn btn-outline'>cancel</button>

@@ -23,7 +23,7 @@ const BookingProduct = ({ bike, setBike,  refetch }) => {
             
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://resale-products-server-hazel.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -21,7 +21,7 @@ const AddProduct = () => {
         
                 }
                 // saving added product information to the database
-                fetch('http://localhost:5000/addedproducts', {
+                fetch('https://resale-products-server-hazel.vercel.app/addedproducts', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json', 
