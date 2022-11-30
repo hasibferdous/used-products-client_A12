@@ -1,23 +1,23 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import AdvertiseModal from '../../Shared/AdvertiseModal/AdvertiseModal';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 import Loading from '../../Shared/Loading/Loading';
 
 const ManageProducts = () => {
 
     const [deletingProduct, setDeletingProduct] = useState(null);
-
     const closeModal = () => {
         setDeletingProduct(null);
     }
-    const [advertiseProduct, setAdvertiseProduct] = useState(null);
 
+    const [advertiseProduct, setAdvertiseProduct] = useState(null);
     const closeModal1 = () => {
         setAdvertiseProduct(null);
     }
-
-
+    const navigate = useNavigate();
     const { data: addedproducts, isLoading, refetch } = useQuery({
         queryKey: ['addedproducts'],
         queryFn: async () => {
@@ -31,10 +31,10 @@ const ManageProducts = () => {
                 return data;
             }
             catch (error) {
-
             }
         }
     });
+    
     const handleDeleteaddedproduct = addedproduct => {
         fetch(`http://localhost:5000/addedproducts/${addedproduct._id}`, {
             method: 'DELETE', 
@@ -50,6 +50,7 @@ const ManageProducts = () => {
             }
         })
     }
+
     const handleAdvertiseAddedproduct = addedproduct => {
         fetch(`http://localhost:5000/addedproducts/${addedproduct._id}`, {
             method: '', 
@@ -59,9 +60,10 @@ const ManageProducts = () => {
         })
         .then(res => res.json())
         .then(data => {
-            if(data.deletedCount > 0){
+            if(data.Count > 0){
                 refetch();
-                toast.success(`Product ${addedproduct.name} deleted successfully`)
+                toast.success(`Product ${addedproduct.name} advertise successfully`)
+                navigate('/');
             }
         })
     }
@@ -108,7 +110,8 @@ const ManageProducts = () => {
                                     <label onClick={() => setDeletingProduct(addedproduct)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
                                 </td>
                                 <td>
-                                    <label onClick={() => setAdvertiseProduct(addedproduct)} htmlFor="confirmation-modal" className="btn btn-sm btn-success">Advertise</label>
+                                    <label onClick={() => setAdvertiseProduct(addedproduct)} htmlFor="confirmation-modal" className="btn btn-sm btn-success" >Advertise</label>
+                                
                                 </td>
                             </tr>)
                         }
@@ -128,15 +131,17 @@ const ManageProducts = () => {
             }
             {
                             
-                                advertiseProduct && <ConfirmationModal
-                                    title={`Are you sure you want to delete?`}
-                                    message={`If you delete ${deletingProduct.name}. It cannot be undone.`}
+                                advertiseProduct && <AdvertiseModal
+                                    title={`Advertisement`}
+                                    message={`Buy ${advertiseProduct.name} at the best price from our website !!`}
+                                    img={'https://img.freepik.com/free-vector/mega-sale-pine-green-abstract-background-professional-multipurpose-design-banner_1340-17396.jpg?w=996&t=st=1669756558~exp=1669757158~hmac=bed890b2bbea6244d48d2a897cd5a7c0dcd8d3f8d81ebda1f24a7c65723f8c29'}
                                     successAction = {handleAdvertiseAddedproduct}
-                                    successButtonName="Delete"
-                                    modalData = {deletingProduct}
+                                    successButtonName="Buy"
+                                    modalData = {advertiseProduct}
                                     closeModal1 = {closeModal1}
+                                    
                                 >
-                                </ConfirmationModal>
+                                </AdvertiseModal>
                             
             }
         </div>
