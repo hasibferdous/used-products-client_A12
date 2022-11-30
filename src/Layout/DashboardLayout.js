@@ -17,6 +17,7 @@ const DashboardLayout = () => {
                     <button className='p-3 bg-red-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/admin">Admin Dashboard (Only for Admin)</Link></button>
                     <button className='p-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/seller">Seller Dashboard</Link></button>
                     <button className='p-3 bg-violet-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/buyer">Buyer Dashboard</Link></button>
+                    <button className='p-3 bg-teal-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard/myorders">My Orders</Link></button>
                     <button className='p-3 bg-green-500 text-white font-semibold rounded-lg shadow-lg m-3'><Link to="/dashboard">Dasboard</Link></button>
                 </ul>
                 </div>

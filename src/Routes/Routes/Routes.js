@@ -3,7 +3,6 @@ import DashboardAdmin from '../../Layout/DashboardAdmin';
 import DashboardBuyer from '../../Layout/DashboardBuyer';
 import DashboardLayout from '../../Layout/DashboardLayout';
 import DashboardSeller from '../../Layout/DashboardSeller';
-import DashboardLayoutS from '../../Layout/DashboardSeller';
 import Main from '../../Layout/Main/Main';
 import Blogs from '../../Pages/Blogs/Blogs';
 import AddProduct from '../../Pages/Dashboard/AddProduct/AddProduct';
@@ -97,7 +96,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/myorders',
-                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
+                element: <MyOrders></MyOrders>
             },
 
             {
@@ -130,7 +129,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'myorders/dashboard/payment',
-                element: <BuyerRoute><Payment></Payment></BuyerRoute>,
+                element: <Payment></Payment>,
                 
             },
 
