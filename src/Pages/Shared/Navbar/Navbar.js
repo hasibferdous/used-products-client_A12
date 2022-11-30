@@ -12,8 +12,8 @@ const Navbar = () => {
 
     const menuItems = <React.Fragment>
         <li><Link to="/" >Home</Link></li>
-        <li><Link to="/products">Products</Link></li>
-        <li><Link to="/about">About</Link></li>
+        <li><Link to="/products">All Bikes</Link></li>
+        {/* <li><Link to="/about">About</Link></li> */}
         <li><Link to="/blogs">Blogs</Link></li>
         {user?.uid ?
             <>
@@ -25,7 +25,7 @@ const Navbar = () => {
         </React.Fragment> 
     return (
         <div>
-        <div className="navbar bg-indigo-400 flex justify-between pl-5 pr-11 pb-9 pt-9 ">
+        <div className="navbar bg-indigo-400 shadow-2xl  flex justify-between pl-5 pr-11 pb-9 pt-9 mt-7 mb-7">
         <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -2,7 +2,7 @@ import React from 'react';
 const Banner = () => {
     return (
         <div>
-        <div className="hero bg-indigo-100 pt-5 pb-5">
+        <div className="hero bg-indigo-200 pt-9 pb-9">
             <div className="hero-content flex-col lg:flex-row-reverse">
             <div>
                 <h1 className="text-5xl font-bold"> Buy & Sale Bikes !</h1>
