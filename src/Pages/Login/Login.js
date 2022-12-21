@@ -77,8 +77,8 @@ const Login = () => {
                     </div>
                 </form>
                 <p>Don't have any account? <Link className='text-green-700' to="/signup">Create new Account</Link></p>
-                <div className="divider">OR</div>
-                <button className='p-3 bg-emerald-200 w-full rounded-xl font-semibold'>CONTINUE WITH GOOGLE</button>
+                {/* <div className="divider">OR</div> */}
+                {/* <button className='p-3 bg-emerald-200 w-full rounded-xl font-semibold'>CONTINUE WITH GOOGLE</button> */}
             </div>
         </div>
     );

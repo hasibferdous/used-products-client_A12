@@ -71,7 +71,7 @@ const router = createBrowserRouter([
         // },
          {
          path: '/category/:id',
-         element: <PrivateRoute><Category></Category></PrivateRoute>,
+         element: <Category></Category>,
          loader: ({params}) => fetch(`https://resale-products-server-hazel.vercel.app/category/${params.id}`)
      },
       {
